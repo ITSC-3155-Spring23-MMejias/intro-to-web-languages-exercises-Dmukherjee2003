@@ -1,0 +1,32 @@
+<html>
+  <head>
+    <title>Hello World</title>
+  </head>
+  <body>
+    <input type="text" id="txt-price" placeholder="Enter the price of the item">  <!--states the input type and place holder for input-->>
+    <input type="text" id="txt-quantity" placeholder="Enter the quanity of the item"> 
+    <button id="btn-submit">Calculate</button> <!--creates a submit button -->
+    <div id="output"></div> <!--Creates a section for output to be presentd -->
+    
+    <script>
+      var priceInput = document.getElementById('txt-price'); //price variable is stored
+      var quantityInput = document.getElementById('txt-quantity'); //quantity variable is stored
+      var submitBtn = document.getElementById('btn-submit'); // submit buttion
+      var output = document.getElementById('output'); //output variable
+    
+      submitBtn.addEventListener('click', function () { // click fubntion calculates the price and quanity of the total
+        var price = priceInput.value;
+        var quanity = quantityInput.value;
+        price = +price;
+        quanity = +quanity;
+        if (Number.isNaN(price) || Number.isNaN(quanity)) {
+          output.innerHTML = 'Invalid input';
+          return;
+        }
+        var totalPrice = price * quanity;
+        totalPrice = Math.round(totalPrice * 100) / 100;
+        output.innerHTML = quanity + ' items at $' + price + ' each is $' + totalPrice; // returns the total price with quanity and price 
+      });
+    </script>
+  </body>
+</html>
